@@ -1,0 +1,23 @@
+{
+  "name": "huilang-corridor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run tests/engine.test.ts",
+    "test:e2e": "playwright test",
+    "preview": "vite preview --host 127.0.0.1",
+    "deploy": "npm run build && node scripts/deploy.mjs"
+  },
+  "dependencies": { "three": "^0.187.0" },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/three": "^0.187.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  }
+}

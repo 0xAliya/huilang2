@@ -1,0 +1,143 @@
+:root {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #344d48;
+  background: #ebece2;
+  font-synthesis: none;
+  --sky-top: #f2ece2;
+  --sky-bottom: #e5e8de;
+  --accent: #395e5b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100dvh; overflow: hidden; background: linear-gradient(165deg, var(--sky-top), var(--sky-bottom)); transition: background 1s; }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: .21; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23777777' opacity='.19' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
+body::after { content: ""; width: 520px; height: 520px; position: fixed; left: 49%; top: 15%; border-radius: 50%; background: radial-gradient(circle, #fff9eaa6 0%, #fff9ea24 60%, transparent 71%); pointer-events: none; z-index: 0; }
+button, input { font: inherit; -webkit-tap-highlight-color: transparent; }
+button { color: inherit; cursor: pointer; border: 0; background: none; }
+button:disabled { cursor: default; opacity: .4; }
+button:focus-visible, input:focus-visible { outline: 2px solid #b08b5f; outline-offset: 6px; }
+button { transition: background .2s, opacity .2s, transform .2s; }
+button:not(:disabled):active { transform: translateY(1px); }
+button svg { width: 21px; height: 21px; flex-shrink: 0; }
+#world { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 2; touch-action: none; }
+#ui { position: relative; z-index: 3; height: 100dvh; pointer-events: none; }
+#ui button, #ui input, .panel { pointer-events: auto; }
+.topbar { position: absolute; top: 34px; left: 4.5%; right: 4.5%; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 12px; padding: 0; }
+.brand svg { width: 35px; height: 35px; }
+.brand > span:first-of-type { font-family: "Noto Serif SC", "Songti SC", serif; font-weight: 600; font-size: 19px; letter-spacing: 5px; }
+.brand-en { font-size: 9px; letter-spacing: 2px; color: #829086; border-left: 1px solid #a7b1a24d; padding-left: 14px; margin-left: 4px; }
+.header-right { display: flex; align-items: center; gap: 29px; }
+.edition { font-size: 10px; letter-spacing: 2px; color: #7c8980; }
+.icon-button { width: 42px; height: 42px; display: inline-flex; justify-content: center; align-items: center; border: 1px solid #748a7233; border-radius: 50%; }
+.icon-button:hover { background: #fff7e84d; }
+.sound { border: 0; }
+.hero { position: absolute; left: 10.5%; top: 25%; }
+.eyebrow { font-size: 10px; font-weight: 400; letter-spacing: 3px; display: flex; align-items: center; gap: 12px; color: #7b8a7b; margin: 0 0 26px; }
+.eyebrow > span:first-child:not(.heading-line) { height: 1px; width: 24px; background: #8f9e87; }
+h1 { font-family: "Noto Serif SC", "Songti SC", "STSong", serif; font-weight: 400; }
+.hero h1 { font-size: clamp(80px, 8.6vw, 122px); letter-spacing: .19em; line-height: 1.28; margin: 0 0 10px -5px; position: relative; }
+.title-dot { font-size: 35px; position: absolute; top: 16px; margin-left: -10px; color: #b89978; }
+.english-title { font-family: Georgia, serif; font-size: 10px; letter-spacing: 4.5px; color: #77877c; margin: 0; }
+.short-rule { width: 32px; height: 1px; background: #b7b49b; margin: 30px 0 22px; }
+.hero-copy { font-size: 13px; line-height: 2.15; letter-spacing: 2px; color: #7d887b; }
+.hero-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; margin-top: 30px; }
+.primary { display: inline-flex; align-items: center; justify-content: space-between; gap: 48px; background: #385b51; color: #f3eee0; border: 1px solid #385b51; border-radius: 3px; padding: 17px 23px; font-size: 12px; letter-spacing: 3px; box-shadow: 0 8px 22px #344d4812; }
+.primary:hover { background: #284b43; box-shadow: 0 8px 25px #344d4825; }
+.primary svg { width: 19px; }
+.text-button { font-size: 11px; letter-spacing: 2px; color: #6d7f71; display: inline-flex; align-items: center; gap: 20px; padding: 7px 0; }
+.text-button:hover { color: #2b594c; }
+.text-button > span { font-size: 16px; }
+.scene-caption { position: absolute; bottom: 15%; left: 54%; display: flex; align-items: center; gap: 12px; font-size: 9px; letter-spacing: 1.5px; color: #829182; }
+.scene-caption > span:nth-child(2) { color: #5b7163; }
+.scene-caption i { width: 18px; height: 1px; background: #9ea58c; }
+.tiny-diamond { font-size: 18px; color: #a38a63; }
+.vertical-note { position: absolute; right: 4.8%; top: 37%; writing-mode: vertical-rl; font-size: 8px; letter-spacing: 3px; color: #8c9585; }
+.landing-footer { position: absolute; bottom: 34px; left: 4.5%; right: 4.5%; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: 1px; color: #8c9786; }
+.landing-footer > span { display: flex; gap: 11px; align-items: center; }
+.landing-footer svg { height: 15px; width: 15px; opacity: .75; }
+.footer-count b { font-family: Georgia, serif; color: #637763; font-size: 11px; letter-spacing: 2px; margin-right: 9px; font-weight: 400; }
+.edge-label { position: absolute; left: 22px; top: 48%; writing-mode: vertical-rl; font-size: 8px; letter-spacing: 3px; color: #99a08d; }
+.game-toolbar { position: absolute; left: 4.5%; top: 110px; display: flex; align-items: center; gap: 15px; font-size: 11px; letter-spacing: 3px; color: #7f8a7b; }
+.game-toolbar .icon-button:last-child { border: 0; margin-left: 4px; }
+.chapter-heading { position: absolute; top: 31%; left: 9%; max-width: 210px; }
+.chapter-heading .eyebrow { font-size: 9px; letter-spacing: 2px; margin-bottom: 18px; }
+.heading-line { height: 1px; width: 28px; background: #adb6a4; display: inline-block; }
+.chapter-heading h1 { font-size: 52px; letter-spacing: 12px; margin: 0 0 16px; }
+.chapter-heading > p:not(.eyebrow) { font-size: 11px; line-height: 1.9; letter-spacing: 1px; color: #829082; }
+.hint-button { display: flex; align-items: center; gap: 8px; padding: 0; margin-top: 29px; color: #81917f; letter-spacing: 1px; font-size: 10px; }
+.hint-button svg { width: 14px; height: 14px; }
+.hint-button:hover { color: #ac8654; }
+.game-bottom { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; width: max-content; max-width: 95%; }
+.status { color: #7d8879; font-size: 11px; letter-spacing: 2px; min-height: 17px; margin: 0 0 16px; }
+.mechanism-dock { display: flex; align-items: center; gap: 25px; background: #f9f7efba; border: 1px solid #ffffffa3; border-radius: 8px; padding: 12px 21px; box-shadow: 0 7px 30px #4f635a09; backdrop-filter: blur(12px); }
+.mechanism-control { display: flex; align-items: center; gap: 17px; }
+.mechanism-control + .mechanism-control { border-left: 1px solid #8a9c7626; padding-left: 24px; }
+.mechanism-button { display: flex; align-items: center; gap: 11px; padding: 4px 0; font-size: 11px; letter-spacing: 2px; }
+.mechanism-button:hover { color: #ad8355; }
+.mechanism-button svg { height: 21px; width: 21px; }
+.angle { color: #a6ab95; font-size: 10px; letter-spacing: 0; margin-left: 7px; }
+.state-dots { display: flex; gap: 6px; }
+.state-dots i { width: 4px; height: 4px; border-radius: 50%; background: #d5d6c8; }
+.state-dots i.active { background: #b2925c; box-shadow: 0 0 0 3px #b2925c1c; }
+input[type="range"] { width: 74px; height: 20px; accent-color: #a88b61; cursor: ew-resize; }
+.control-caption { font-size: 9px; letter-spacing: 1.4px; color: #99a18d; margin: 12px 0 0; }
+.chapter-progress { position: absolute; right: 4.5%; bottom: 44px; display: flex; align-items: center; gap: 10px; font-family: Georgia, serif; font-size: 10px; color: #b1b6a4; }
+.chapter-progress .current { color: #5b7664; }
+.chapter-progress i { width: 15px; height: 1px; background: #b7c0ab66; }
+.toast { position: absolute; bottom: 185px; left: 50%; transform: translate(-50%, 8px); background: #f9f8eff2; color: #5d6f5b; border: 1px solid #ffffffb3; border-radius: 6px; padding: 13px 22px; box-shadow: 0 8px 30px #334e4310; font-size: 12px; line-height: 1.8; letter-spacing: 1px; opacity: 0; transition: opacity .3s, transform .3s; max-width: min(520px, 88vw); width: max-content; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.panel { position: absolute; inset: 110px 5% 45px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+body[data-view="select"] #world, body[data-view="complete"] #world { opacity: .11; filter: blur(3px); transition: opacity .6s; }
+.chapter-select h1 { font-size: 42px; letter-spacing: 8px; margin: 0 0 14px; }
+.chapter-select .eyebrow { margin-bottom: 18px; }
+.muted { color: #8a9585; font-size: 11px; letter-spacing: 2px; }
+.chapter-cards { display: flex; justify-content: center; width: 100%; gap: 20px; margin: 30px 0 25px; }
+.chapter-card { width: min(270px, 29%); text-align: left; background: #f9f6ed94; padding: 23px; border: 1px solid #ffffff9c; border-radius: 5px; box-shadow: 0 10px 35px #4d654c05; }
+.chapter-card:hover:not(:disabled) { transform: translateY(-5px); background: #fffcf3; box-shadow: 0 14px 40px #4d654c10; }
+.chapter-card:disabled { opacity: .42; }
+.card-top { display: flex; align-items: center; justify-content: space-between; font-size: 8px; letter-spacing: 2px; color: #8d9784; }
+.card-top svg { width: 15px; height: 15px; }
+.chapter-art { height: 115px; display: block; position: relative; width: 130px; margin: 17px auto 12px; --art: #c9a696; --art-dark: #709185; }
+.chapter-2 .chapter-art { --art: #8cad9c; --art-dark: #57877e; }
+.chapter-3 .chapter-art { --art: #b6a7c8; --art-dark: #807793; }
+.art-gate { width: 49px; height: 68px; border-radius: 30px 30px 0 0; background: var(--art-dark); position: absolute; top: 17px; left: 54px; transform: skewY(-15deg); box-shadow: 7px 6px 0 var(--art); }
+.art-gate::after { content: ""; background: #f4f2e7; width: 23px; height: 43px; border-radius: 18px 18px 0 0; position: absolute; bottom: 0; left: 13px; }
+.art-step { position: absolute; top: 83px; left: 31px; width: 82px; height: 12px; background: var(--art); transform: skewY(-15deg); }
+.art-step.second { top: 98px; left: 15px; width: 83px; opacity: .55; }
+.art-sun { width: 40px; height: 40px; border: 1px solid #c7bb925c; border-radius: 50%; position: absolute; left: 7px; top: 8px; }
+.card-title { display: flex; align-items: center; gap: 14px; margin-bottom: 13px; }
+.card-title b { font: italic 24px Georgia, serif; color: #afb598; }
+.card-title strong { font: 25px "Noto Serif SC", "Songti SC", serif; letter-spacing: 6px; }
+.card-description { display: block; font-size: 10px; color: #909783; letter-spacing: 1px; line-height: 1.8; min-height: 36px; }
+.card-bottom { display: block; border-top: 1px solid #b9c0aa33; padding-top: 14px; margin-top: 17px; font-size: 9px; letter-spacing: 1px; color: #8d9b83; }
+.completion-symbol { width: 62px; color: #a9976f; margin-bottom: 30px; }
+.completion h1 { font-size: 50px; letter-spacing: 8px; margin: 0 0 24px; }
+.completion > p:not(.eyebrow) { font-size: 12px; color: #889380; letter-spacing: 2px; line-height: 2.4; }
+.completion-chapters { display: flex; gap: 18px; font-size: 11px; color: #839579; margin: 23px 0 40px; }
+.completion-chapters i { color: #bcb999; }
+.completion .text-button { margin-top: 20px; }
+@media (min-width: 760px) and (max-height: 700px) {
+  .hero { top: 22%; }.hero h1 { font-size: 80px; }.hero-actions { margin-top: 20px; gap: 12px; }.short-rule { margin: 19px 0 13px; }
+  .scene-caption { bottom: 13%; }.game-bottom { bottom: 23px; }.chapter-heading { top: 34%; }
+}
+@media (max-width: 759px) {
+  .topbar { top: max(24px, env(safe-area-inset-top)); left: 25px; right: 21px; }.brand svg { width: 29px; height: 29px; }.brand > span:first-of-type { font-size: 16px; }.brand-en, .edition, .vertical-note, .edge-label { display: none; }
+  .hero { top: 15%; left: 0; width: 100%; text-align: center; }.hero .eyebrow { justify-content: center; font-size: 8px; letter-spacing: 2px; margin-bottom: 17px; }.hero .eyebrow > span { display: none; }
+  .hero h1 { font-size: 69px; margin: 0 0 9px 12px; letter-spacing: 15px; }.title-dot { font-size: 22px; top: 8px; margin-left: -6px; }
+  .english-title { font-size: 8px; letter-spacing: 3.2px; }.short-rule { display: none; }.hero-copy { font-size: 10px; line-height: 1.9; letter-spacing: 1.4px; margin-top: 18px; }.hero-copy br { display: none; }
+  .hero-actions { position: fixed; top: auto; bottom: 9.8%; left: 0; width: 100%; margin: 0; align-items: center; gap: 12px; }.primary { font-size: 11px; padding: 15px 23px; min-width: 196px; }.text-button { font-size: 10px; gap: 12px; }
+  .scene-caption { left: 0; bottom: 24%; width: 100%; justify-content: center; font-size: 8px; gap: 8px; letter-spacing: 1px; }.scene-caption > span:last-child { display: none; }.scene-caption i { display: none; }
+  .landing-footer { bottom: max(22px, env(safe-area-inset-bottom)); left: 0; right: 0; justify-content: center; font-size: 8px; }.landing-footer .footer-count { display: none; }
+  .game-toolbar { left: 24px; top: 84px; font-size: 9px; gap: 9px; }.game-toolbar .icon-button { width: 31px; height: 31px; }.game-toolbar svg { width: 17px; }
+  .chapter-heading { left: 0; top: 19%; text-align: center; width: 100%; max-width: none; }.chapter-heading .eyebrow { justify-content: center; font-size: 8px; margin-bottom: 10px; }.heading-line { display: none; }.chapter-heading h1 { font-size: 35px; letter-spacing: 10px; margin: 0 0 10px 10px; }.chapter-heading > p:not(.eyebrow) { font-size: 10px; }.hint-button { position: fixed; right: 26px; top: 93px; margin: 0; font-size: 9px; }
+  .game-bottom { bottom: max(47px, calc(env(safe-area-inset-bottom) + 25px)); max-width: 94%; }.status { font-size: 10px; letter-spacing: 1px; margin-bottom: 13px; }.mechanism-dock { gap: 12px; padding: 12px 15px; }.mechanism-control { gap: 12px; }.mechanism-control + .mechanism-control { padding-left: 12px; }.mechanism-button { font-size: 10px; letter-spacing: 1px; gap: 7px; }.angle { display: none; }.mechanism-button svg { width: 17px; height: 17px; }.state-dots { gap: 4px; }input[type="range"] { width: 60px; }.control-caption { font-size: 8px; letter-spacing: .5px; }.chapter-progress { right: 0; bottom: 19px; width: 100%; justify-content: center; font-size: 8px; gap: 10px; }
+  .toast { bottom: 177px; font-size: 11px; padding: 12px 16px; }
+  .panel { inset: 100px 23px 24px; }.chapter-select h1 { font-size: 31px; letter-spacing: 6px; }.chapter-select .eyebrow { font-size: 8px; margin-bottom: 13px; }.muted { font-size: 9px; letter-spacing: 1px; }.chapter-cards { flex-direction: column; gap: 12px; margin: 24px 0 18px; }.chapter-card { width: 100%; padding: 16px 18px; min-height: 130px; position: relative; }.chapter-art { position: absolute; right: 3px; top: 17px; transform: scale(.64); transform-origin: center; margin: 0; opacity: .8; }.card-title { margin: 13px 0 7px; gap: 12px; }.card-title b { font-size: 20px; }.card-title strong { font-size: 22px; }.card-description { font-size: 9px; max-width: 72%; min-height: 0; }.card-bottom { border: 0; padding: 0; margin-top: 11px; font-size: 8px; }.card-top { font-size: 7px; }.card-top svg { width: 12px; }.chapter-select > .text-button { margin-top: 0; }
+  .completion h1 { font-size: 31px; letter-spacing: 3px; }.completion > p:not(.eyebrow) { font-size: 10px; letter-spacing: 1px; }.completion .eyebrow { font-size: 8px; }.completion-chapters { font-size: 10px; gap: 12px; }
+}
+@media (max-width: 759px) and (max-height: 730px) {
+  .hero { top: 14%; }.hero h1 { font-size: 54px; }.hero-copy { margin-top: 10px; }.hero-actions { bottom: 8%; gap: 7px; }.scene-caption { bottom: 24%; }.landing-footer { bottom: 13px; }
+  .chapter-heading { top: 21%; }.chapter-heading h1 { font-size: 29px; }.chapter-heading .eyebrow { display: none; }.chapter-heading > p:not(.eyebrow) { margin: 6px 0; }.game-bottom { bottom: 42px; }.control-caption { max-width: 90vw; }
+  .chapter-select { justify-content: flex-start; overflow-y: auto; }.chapter-cards { margin-top: 16px; gap: 8px; }.chapter-card { min-height: 112px; padding: 12px 16px; }.chapter-select h1 { font-size: 25px; }.chapter-select .eyebrow { margin-bottom: 8px; }.card-description { display: none; }.chapter-art { top: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

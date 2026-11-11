@@ -1,0 +1,40 @@
+import type { Level } from '../engine/types';
+export const third: Level = {
+  id: 3, name: '潮汐', subtitle: '潮来潮往，终有归途。',
+  description: '借一程潮汐，走过两岸与虚实。',
+  hint: [
+    '先站上靠近旅人的渡台，再拖动滑杆到另一端。',
+    '走上远端的转柱，搭乘它转动两次。',
+    '跨过相接的幻径，沿下层石阶走到另一座渡台。',
+    '把渡台滑回原位，归途就在左侧的光门。',
+  ],
+  minimum: 4, start: 'start', goal: 'goal',
+  palette: { top: '#e0d9eb', side: '#a196bf', accent: '#bb9462', dark: '#625777', background: ['#eee8ed', '#dcdcea'] },
+  tiles: [
+    { id: 'start', at: [-4, 0, 0] },
+    { id: 'ferry', at: [-3, 0, 0], mechanism: 'tide' },
+    { id: 'mid', at: [1, 0, 0] },
+    { id: 'rider', at: [-1, 0, 0], mechanism: 'spire' },
+    { id: 'far', at: [2, -2, -1] },
+    { id: 'path-a', at: [1, -2, -1] },
+    { id: 'return', at: [-3, -2, -1], mechanism: 'tide' },
+    { id: 'gate', at: [-3, -2, 0], support: 2 },
+    { id: 'threshold', at: [-3, -2, 1], support: 2 },
+    { id: 'goal', at: [-3, -2, 2], support: 2 },
+  ],
+  edges: [
+    { from: 'start', to: 'ferry', when: { tide: 0 } },
+    { from: 'ferry', to: 'mid', when: { tide: 1 } },
+    { from: 'mid', to: 'rider', when: { spire: 0 } },
+    { from: 'rider', to: 'far', kind: 'illusion', when: { spire: 2 } },
+    { from: 'far', to: 'path-a' },
+    { from: 'path-a', to: 'return', when: { tide: 1 } },
+    { from: 'return', to: 'gate', when: { tide: 0 } },
+    { from: 'gate', to: 'threshold' },
+    { from: 'threshold', to: 'goal' },
+  ],
+  mechanisms: [
+    { id: 'tide', label: '双生渡台', type: 'slide', pivot: [0, 0, 0], axis: [1, 0, 0], stops: [0, 3], states: 2, initial: 0 },
+    { id: 'spire', label: '寻光转柱', type: 'rotate', pivot: [3, 0, 0], states: 4, initial: 0 },
+  ],
+};
